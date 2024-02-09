@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+Contains class Rectangle
+with private attribute width and height
+"""
 class Rectangle:
     def __init__(self, width=0, height=0):
         self.width = width
