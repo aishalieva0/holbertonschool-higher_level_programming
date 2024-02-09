@@ -3,6 +3,8 @@
 Contains class Rectangle
 with private attribute width and height
 """
+
+
 class Rectangle:
     """
     Defines a class rectangle with private attribute width and height
