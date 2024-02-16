@@ -58,6 +58,7 @@ class Rectangle(Base):
         self.__y = param
 
     def isInteger(self, value, param):
+        """ checks if param is int or not """
         if type(value) is not int:
             raise TypeError(param + ' must be integer')
 
