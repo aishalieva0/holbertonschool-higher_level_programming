@@ -15,6 +15,13 @@ class TestRectangleMethods(unittest.TestCase):
         """ Method invoked for each test """
         Base._Base__nb_objects = 0
 
+        self.file_path = "test_Rectangle.json"
+
+    def tearDown(self):
+        """ Method invoked after each test """
+        if os.path.exists(self.file_path):
+            os.remove(self.file_path)
+
     def test_new_rectangle(self):
         """ Test new rectangle """
         new = Rectangle(1, 1)
@@ -365,3 +372,13 @@ class TestRectangleMethods(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
+    def test_save_to_file_empty_list(self):
+        """ Test save_to_file with empty list """
+        Rectangle.save_to_file([])
+
+        self.assertTrue(os.path.exists(self.file_path), "File was not created")
+
+        with open(self.file_path, 'r') as file:
+            file_content = file.read()
+            self.assertEqual(file_content, '[]', "isnt empty doesnt contain '[]'")
