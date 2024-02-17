@@ -52,3 +52,26 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(square.x, 2)
         square = Square.create(**{'id': 89, 'size': 1, 'x': 2, 'y': 3})
         self.assertEqual(square.y, 3)
+
+    def test_none(self):
+        r1 = Square(5)
+
+        with self.assertRaises(TypeError):
+            r1.size = None
+
+    def test_empty(self):
+        r1 = Square(7)
+
+        with self.assertRaises(TypeError):
+            r1.size = ''
+
+    def test_load_from_file_2(self):
+        s1 = Square(5)
+        s2 = Square(8, 2, 5)
+
+        linput = [s1, s2]
+        Square.save_to_file(linput)
+        loutput = Square.load_from_file()
+
+        for i in range(len(linput)):
+            self.assertEqual(linput[i].__str__(), loutput[i].__str__())
