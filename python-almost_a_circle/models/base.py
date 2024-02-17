@@ -2,6 +2,7 @@
 """
 model that contains class Base
 """
+from os import path
 import json
 
 
@@ -53,3 +54,20 @@ class Base:
             dummy = cls(1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        """returns a list of instances"""
+        filename = cls.__name__ + ".json"
+
+        if path.exists(filename) is False:
+            return []
+
+        with open(filename, mode='r', encoding='utf-8') as f:
+            objs = cls.from_json_string(f.read())
+            instances = []
+
+            for el in objs:
+                instances.append(cls.create(**el))
+
+            return instances
