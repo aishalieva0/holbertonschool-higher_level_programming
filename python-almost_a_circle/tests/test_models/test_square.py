@@ -11,8 +11,6 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(square), "[Square] (1) 2/3 - 4")
 
     def test_to_dictionary(self):
-        Base._Base__nb_objects = 0
-
         s1 = Square(10, 2, 1, 9)
         s1_dictionary = s1.to_dictionary()
         expected = {'id': 9, 'x': 2, 'size': 10, 'y': 1}
@@ -133,5 +131,3 @@ class TestSquare(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
-
-
