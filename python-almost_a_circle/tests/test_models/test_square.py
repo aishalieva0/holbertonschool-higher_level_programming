@@ -11,9 +11,22 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(square), "[Square] (1) 2/3 - 4")
 
     def test_to_dictionary(self):
-        square = Square(10, 5, 5, 1)
-        square_dict = square.to_dictionary()
-        self.assertEqual(square_dict, {'id': 1, 'size': 10, 'x': 5, 'y': 5})
+        Base._Base__nb_objects = 0
+
+        s1 = Square(10, 2, 1, 9)
+        s1_dictionary = s1.to_dictionary()
+        expected = {'id': 9, 'x': 2, 'size': 10, 'y': 1}
+        self.assertEqual(s1_dictionary, expected)
+
+        s1 = Square(1, 0, 0, 9)
+        s1_dictionary = s1.to_dictionary()
+        expected = {'id': 9, 'x': 0, 'size': 1, 'y': 0}
+        self.assertEqual(s1_dictionary, expected)
+
+        s1.update(5, 5, 5, 5)
+        s1_dictionary = s1.to_dictionary()
+        expected = {'id': 5, 'x': 5, 'size': 5, 'y': 5}
+        self.assertEqual(s1_dictionary, expected)
 
     def test_update(self):
         square = Square(1, 1, 1, 1)
