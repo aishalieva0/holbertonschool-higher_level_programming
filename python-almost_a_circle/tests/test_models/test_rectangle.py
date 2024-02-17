@@ -374,5 +374,5 @@ class TestRectangleMethods(unittest.TestCase):
 
         with open(file_path, 'r') as file:
         file_content = file.read()
-        self.assertEqual(file_content, '[]', "File is not empty or does not contain '[]'")
+        self.assertEqual(file_content, '[]', "isntt empty or doesnt contain '[]'")
 
