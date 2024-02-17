@@ -78,6 +78,12 @@ class TestBaseMethods(unittest.TestCase):
         with open("Square.json", "r") as file:
             self.assertEqual(file.read(), "[]")
 
+    def test_save_to_file_3(self):
+        """ Test save_to_file with empty list """
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+
     def test_save_to_file_2(self):
         """ Test JSON file """
         Rectangle.save_to_file(None)
