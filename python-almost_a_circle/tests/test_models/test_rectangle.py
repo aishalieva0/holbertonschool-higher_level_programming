@@ -15,13 +15,6 @@ class TestRectangleMethods(unittest.TestCase):
         """ Method invoked for each test """
         Base._Base__nb_objects = 0
 
-        self.file_path = "test_Rectangle.json"
-
-    def tearDown(self):
-        """ Method invoked after each test """
-        if os.path.exists(self.file_path):
-            os.remove(self.file_path)
-
     def test_new_rectangle(self):
         """ Test new rectangle """
         new = Rectangle(1, 1)
