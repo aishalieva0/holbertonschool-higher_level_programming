@@ -369,4 +369,10 @@ class TestRectangleMethods(unittest.TestCase):
     def test_save_to_file_empty_list(self):
         """ Test save_to_file with empty list """
         Rectangle.save_to_file([])
+        file_path = "Rectangle.json"
+        self.assertTrue(os.path.exists(file_path), "File was not created")
+
+        with open(file_path, 'r') as file:
+        file_content = file.read()
+        self.assertEqual(file_content, '[]', "File is not empty or does not contain '[]'")
 
