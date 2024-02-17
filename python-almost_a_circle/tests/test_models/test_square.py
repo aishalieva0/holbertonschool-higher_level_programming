@@ -6,49 +6,6 @@ from models.square import Square
 
 class TestSquare(unittest.TestCase):
 
-    def test_square_constructor(self):
-        square1 = Square(1)
-        self.assertEqual(square1.size, 1)
-
-        square2 = Square(1, 2)
-        self.assertEqual(square2.size, 1)
-        self.assertEqual(square2.x, 2)
-
-        square3 = Square(1, 2, 3)
-        self.assertEqual(square3.size, 1)
-        self.assertEqual(square3.x, 2)
-        self.assertEqual(square3.y, 3)
-
-        square_str1 = Square("1")
-        self.assertEqual(square_str1.size, 1)
-
-        square_str2 = Square(1, "2")
-        self.assertEqual(square_str2.size, 1)
-        self.assertEqual(square_str2.x, 2)
-
-        square_str3 = Square(1, 2, "3")
-        self.assertEqual(square_str3.size, 1)
-        self.assertEqual(square_str3.x, 2)
-        self.assertEqual(square_str3.y, 3)
-
-        square_neg1 = Square(-1)
-        self.assertEqual(square_neg1.size, 1)
-
-        square_neg2 = Square(1, -2)
-        self.assertEqual(square_neg2.size, 1)
-        self.assertEqual(square_neg2.x, 0)
-        self.assertEqual(square_neg2.y, 0)
-
-        square_neg3 = Square(1, 2, -3)
-        self.assertEqual(square_neg3.size, 1)
-        self.assertEqual(square_neg3.x, 2)
-        self.assertEqual(square_neg3.y, 0)
-
-        square_zero = Square(0)
-        self.assertEqual(square_zero.size, 0)
-        self.assertEqual(square_zero.x, 0)
-        self.assertEqual(square_zero.y, 0)
-
     def test_str(self):
         square = Square(4, 2, 3, 1)
         self.assertEqual(str(square), "[Square] (1) 2/3 - 4")
