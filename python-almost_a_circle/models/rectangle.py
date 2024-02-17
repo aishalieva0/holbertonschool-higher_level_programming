@@ -87,3 +87,9 @@ class Rectangle(Base):
         str_wh = "{}/{}".format(self.width, self.height)
 
         return "[Rectangle] " + str_id + str_xy + str_wh
+
+    def update(self, *args):
+        """update atrr """
+        attrs = ['id', 'width', 'height', 'x', 'y']
+        for i in range(len(args)):
+            setattr(self, attrs[i], args[i])
