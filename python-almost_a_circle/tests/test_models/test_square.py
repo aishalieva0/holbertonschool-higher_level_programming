@@ -6,49 +6,6 @@ from models.square import Square
 
 class TestSquare(unittest.TestCase):
 
-    def test_square_constructor(self):
-        square1 = Square(1)
-        self.assertEqual(square1.size, 1)
-
-        square2 = Square(1, 2)
-        self.assertEqual(square2.size, 1)
-        self.assertEqual(square2.x, 2)
-
-        square3 = Square(1, 2, 3)
-        self.assertEqual(square3.size, 1)
-        self.assertEqual(square3.x, 2)
-        self.assertEqual(square3.y, 3)
-
-        square_str1 = Square("1")
-        self.assertEqual(square_str1.size, 1)
-
-        square_str2 = Square(1, "2")
-        self.assertEqual(square_str2.size, 1)
-        self.assertEqual(square_str2.x, 2)
-
-        square_str3 = Square(1, 2, "3")
-        self.assertEqual(square_str3.size, 1)
-        self.assertEqual(square_str3.x, 2)
-        self.assertEqual(square_str3.y, 3)
-
-        square_neg1 = Square(-1)
-        self.assertEqual(square_neg1.size, 1)
-
-        square_neg2 = Square(1, -2)
-        self.assertEqual(square_neg2.size, 1)
-        self.assertEqual(square_neg2.x, 0)
-        self.assertEqual(square_neg2.y, 0)
-
-        square_neg3 = Square(1, 2, -3)
-        self.assertEqual(square_neg3.size, 1)
-        self.assertEqual(square_neg3.x, 2)
-        self.assertEqual(square_neg3.y, 0)
-
-        square_zero = Square(0)
-        self.assertEqual(square_zero.size, 0)
-        self.assertEqual(square_zero.x, 0)
-        self.assertEqual(square_zero.y, 0)
-
     def test_str(self):
         square = Square(4, 2, 3, 1)
         self.assertEqual(str(square), "[Square] (1) 2/3 - 4")
@@ -108,6 +65,45 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             r1.size = ''
 
+    def test_getter(self):
+        r1 = Square(5)
+        self.assertEqual(r1.size, 5)
+
+    def test_setter(self):
+        r1 = Square(5)
+        r1.size = 8
+        self.assertEqual(r1.size, 8)
+
+    def test_string(self):
+        r1 = Square(3)
+
+        with self.assertRaises(TypeError):
+            r1.size = "Hi"
+
+    def test_negative(self):
+        r1 = Square(6)
+
+        with self.assertRaises(ValueError):
+            r1.size = -5
+
+    def test_zero(self):
+        r1 = Square(6)
+
+        with self.assertRaises(ValueError):
+            r1.size = 0
+
+    def test_decimal(self):
+        r1 = Square(6)
+
+        with self.assertRaises(TypeError):
+            r1.size = 1.5
+
+    def test_tuple(self):
+        r1 = Square(7)
+
+        with self.assertRaises(TypeError):
+            r1.size = (2, 8)
+
     def test_save_to_file_with_empty_list(self):
         Square.save_to_file([])
         with open("Square.json", "r") as file:
@@ -124,3 +120,5 @@ class TestSquare(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
+
