@@ -9,7 +9,7 @@ from models.rectangle import Rectangle
 
 
 
-class TestBase(unittest.Testcase):
+class TestBase(unittest.TestCase):
     """
     class to test class Base
     """
