@@ -365,3 +365,8 @@ class TestRectangleMethods(unittest.TestCase):
 
         for i in range(len(linput)):
             self.assertEqual(linput[i].__str__(), loutput[i].__str__())
+
+    def test_save_to_file_empty_list(self):
+        """ Test save_to_file with empty list """
+        Rectangle.save_to_file([])
+
