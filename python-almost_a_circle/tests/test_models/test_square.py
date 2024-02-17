@@ -6,6 +6,69 @@ from models.square import Square
 
 class TestSquare(unittest.TestCase):
 
+    def test_square_constructor_with_one_argument(self):
+        square = Square(1)
+        self.assertEqual(square.size, 1)
+        self.assertEqual(square.x, 0)
+        self.assertEqual(square.y, 0)
+
+    def test_square_constructor_with_two_arguments(self):
+        square = Square(1, 2)
+        self.assertEqual(square.size, 1)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 0)
+
+    def test_square_constructor_with_three_arguments(self):
+        square = Square(1, 2, 3)
+        self.assertEqual(square.size, 1)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 3)
+
+    def test_square_constructor_with_string_arguments(self):
+        square_str1 = Square("1")
+        self.assertEqual(square_str1.size, 1)
+        self.assertEqual(square_str1.x, 0)
+        self.assertEqual(square_str1.y, 0)
+
+        square_str2 = Square(1, "2")
+        self.assertEqual(square_str2.size, 1)
+        self.assertEqual(square_str2.x, 2)
+        self.assertEqual(square_str2.y, 0)
+
+        square_str3 = Square(1, 2, "3")
+        self.assertEqual(square_str3.size, 1)
+        self.assertEqual(square_str3.x, 2)
+        self.assertEqual(square_str3.y, 3)
+
+    def test_square_constructor_with_four_arguments(self):
+        square = Square(1, 2, 3, 4)
+        self.assertEqual(square.size, 1)
+        self.assertEqual(square.x, 2)
+        self.assertEqual(square.y, 3)
+        self.assertEqual(square.id, 4)
+
+    def test_square_constructor_with_negative_arguments(self):
+        square_neg1 = Square(-1)
+        self.assertEqual(square_neg1.size, 1)
+        self.assertEqual(square_neg1.x, 0)
+        self.assertEqual(square_neg1.y, 0)
+
+        square_neg2 = Square(1, -2)
+        self.assertEqual(square_neg2.size, 1)
+        self.assertEqual(square_neg2.x, 0)
+        self.assertEqual(square_neg2.y, 0)
+
+        square_neg3 = Square(1, 2, -3)
+        self.assertEqual(square_neg3.size, 1)
+        self.assertEqual(square_neg3.x, 2)
+        self.assertEqual(square_neg3.y, 0)
+
+    def test_square_constructor_with_zero_argument(self):
+        square_zero = Square(0)
+        self.assertEqual(square_zero.size, 0)
+        self.assertEqual(square_zero.x, 0)
+        self.assertEqual(square_zero.y, 0)
+
     def test_str(self):
         square = Square(4, 2, 3, 1)
         self.assertEqual(str(square), "[Square] (1) 2/3 - 4")
