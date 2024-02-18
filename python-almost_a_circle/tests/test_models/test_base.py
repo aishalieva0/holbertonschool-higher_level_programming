@@ -7,6 +7,7 @@ from models.rectangle import Rectangle
 from io import StringIO
 from unittest import TestCase
 from unittest.mock import patch
+import os
 
 
 class TestBaseMethods(unittest.TestCase):
@@ -81,10 +82,19 @@ class TestBaseMethods(unittest.TestCase):
     def test_save_to_file_3(self):
         """ Test save_to_file with empty list """
         Square.save_to_file([])
-        self.assertTrue(os.path.exists(self.test_file_name))
+        res = "[]\n"
         with open("Square.json", "r") as file:
-            data = json.load(file)
-            self.assertEqual(data, [])
+             with patch('sys.stdout', new=StringIO()) as str_out:
+                 print(file.read())
+                 self.assertEqual(str_out.getvalue(), res)
+        try:
+            os.remove("Square.json")
+        except:
+            pass
+
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
 
     def test_save_to_file_2(self):
         """ Test JSON file """
