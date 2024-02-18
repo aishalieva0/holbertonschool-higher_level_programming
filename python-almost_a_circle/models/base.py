@@ -4,6 +4,7 @@ model that contains class Base
 """
 from os import path
 import json
+import turtle
 
 
 class Base:
@@ -71,3 +72,35 @@ class Base:
                 instances.append(cls.create(**el))
 
             return instances
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = turtle.Screen()
+        screen.setup(width=600, height=600)
+        screen.title("drawing rectangles and squares")
+
+        pen = turtle.Turtle()
+
+        for rectangle in list_rectangles:
+            pen.penup()
+            pen.goto(rectangle.x, rectangle.y)
+            pen.pendown()
+            pen.begin_fill()
+            for _ in range(2):
+                pen.forward(rectangle.width)
+                pen.left(90)
+                pen.forward(rectangle.height)
+                pen.left(90)
+            pen.end_fill()
+
+        for square in list_squares:
+            pen.penup()
+            pen.goto(square.x, square.y)
+            pen.pendown()
+            pen.begin_fill()
+            for _ in range(4):
+                pen.forward(square.size)
+                pen.left(90)
+            pen.end_fill()
+
+        screen.mainloop()
