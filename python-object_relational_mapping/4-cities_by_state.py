@@ -13,7 +13,7 @@ def main():
     cur = db.cursor()
 
     cur.execute("SELECT c.id, c.name, s.name FROM cities c \
-                LEFT JOIN states s ON c.id = s.id \
+                JOIN states s ON c.id = s.id \
                 ORDER BY c.id")
 
     [print(state) for state in cur.fetchall()]
