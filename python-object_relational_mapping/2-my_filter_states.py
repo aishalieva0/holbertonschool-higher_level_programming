@@ -12,13 +12,13 @@ def main():
     u = sys.argv[1]
     p = sys.argv[2]
     d = sys.argv[3]
-    arg = sys.argv[4]
+    a = sys.argv[4]
 
     db = MySQLdb.connect(user=u, passwd=p, db=d, host='localhost', port=3306)
 
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id".format(arg)
-    cur.execute(query)
+    q = "SELECT * FROM states WHERE BINARY name = '{}' ORDER BY id".format(a)
+    cur.execute(q)
     [print(state) for state in cur.fetchall()]
     cur.close()
     db.close()
