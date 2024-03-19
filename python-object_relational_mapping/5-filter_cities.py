@@ -17,7 +17,8 @@ def main():
                 LEFT JOIN states s ON c.state_id = s.id \
                 ORDER BY c.id")
 
-    [print(", ".join([state[2] for state in cur.fetchall() if state[4] ==  state_name]))]
+    [print(", ".join([state[2] for state in cur.fetchall()
+     if state[4] == state_name]))]
     cur.close()
     db.close()
 
