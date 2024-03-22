@@ -16,11 +16,11 @@ def main():
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    for state in session.query(State).first():
-        if state:
-            print("{}: {}".format(state.id, state.name))
-        else:
-            print("Nothing")
+    state = session.query(State).first()
+    if state:
+        print("{}: {}".format(state.id, state.name))
+    else:
+        print("Nothing")
 
-    if __name__ == "__main__":
+if __name__ == "__main__":
         main()
