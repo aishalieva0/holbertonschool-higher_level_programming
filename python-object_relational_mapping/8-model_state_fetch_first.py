@@ -22,5 +22,6 @@ def main():
     else:
         print("Nothing")
 
+
 if __name__ == "__main__":
-        main()
+    main()
