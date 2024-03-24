@@ -17,6 +17,8 @@ def main():
     engine = create_engine("mysql+mysqldb://{}:{}@localhost:3306/{}"
                            .format(usr, pswd, db))
 
+    Base.metadata.create_all(engine)
+
     Session = sessionmaker(bind=engine)
     session = Session()
 
