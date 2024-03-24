@@ -1,7 +1,7 @@
 """ contains the class definition of a City """
-from relationship_state import Base, State
+from relationship_state import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
-
+from sqlalchemy.orm import relationship
 
 class City(Base):
     """ model City """
